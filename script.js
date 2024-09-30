@@ -9,13 +9,13 @@ logo.innerText = "Login!";
 let userNameLabel = document.createElement("label");
 userNameLabel.innerText = "Username";
 loginPage.appendChild(userNameLabel);
-let inputUsername = document.createElement("input");
-loginPage.appendChild(inputUsername);
+let inputUsernameElement = document.createElement("input");
+loginPage.appendChild(inputUsernameElement);
 let passwordLabel = document.createElement("label");
 passwordLabel.innerText = "Password";
 loginPage.appendChild(passwordLabel);
-let inputPassword = document.createElement("input");
-loginPage.appendChild(inputPassword);
+let inputPasswordElement = document.createElement("input");
+loginPage.appendChild(inputPasswordElement);
 let loginButton = document.createElement("button");
 loginButton.innerText = "Login";
 loginPage.appendChild(loginButton);
@@ -48,20 +48,22 @@ errorPage.appendChild(backToLoginBtn);
 errorPage.style.display = "none";
 root.appendChild(errorPage);
 
+let username= "test";
+let password= "1234";
 let usernameFromLocalStorage = localStorage.getItem("username"); 
 let passwordFromLocalStorage = localStorage.getItem("password");
 
-if(usernameFromLocalStorage == "test" && passwordFromLocalStorage == "1234"){
+if(usernameFromLocalStorage == username && passwordFromLocalStorage == password){
     welcomePage.style.display = "block";
     loginPage.style.display = "none";
 }
 
 loginButton.addEventListener("click", function(){
-    if(inputUsername.value == "test" && inputPassword.value == "1234"){
-        let username = inputUsername.value;
-        localStorage.setItem("username", username); 
-        let password = inputPassword.value;
-        localStorage.setItem("password", password);
+    if(inputUsernameElement.value == username && inputPasswordElement.value == password){
+        let usernameInput = inputUsernameElement.value;
+        localStorage.setItem("username", usernameInput); 
+        let passwordInput = inputPasswordElement.value;
+        localStorage.setItem("password", passwordInput);
         welcomePage.style.display = "block";
         loginPage.style.display = "none";
     }
@@ -71,8 +73,8 @@ loginButton.addEventListener("click", function(){
         backToLoginBtn.addEventListener("click", function(){
             loginPage.style.display = "block";
             errorPage.style.display = "none";
-            inputUsername.value = "";
-            inputPassword.value = "";
+            inputUsernameElement.value = "";
+            inputPasswordElement.value = "";
         })
     }
 
